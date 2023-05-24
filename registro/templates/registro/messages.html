@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+
+<div>
+    <h1>{{dato.name}}</h1>
+    <p>{{dato.description}}</p>
+
+    <p>Conversacion</p>
+    {%for message in messages%}
+    <div>
+        <p>{{message.user}} {{message.created|timesince}}</p> 
+        <p>{{message.body}}  <a href={%url 'delete-message' message.id%}>DELETE</a></p> 
+    </div>
+    {%endfor%}
+    {%if request.user.is_authenticated%}
+    <div>
+        <form method="post" action=""> 
+            {%csrf_token%}
+            <input type="text" name="body" placeholder="Escribe tu comentario">
+            {% comment %} <input type="submit" name="save" value="Enviar"> {% endcomment %}
+
+        </form> 
+    </div> 
+</div>
+<div>
+    <h1>Participantes</h1>
+    {%for user in participantes%}
+    <p>@{{user}}</p> 
+    {%endfor%}
+</div>
+{%endif%}
+
+
+
+
+
+
+
+
+
+
+{%endblock%}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+
+{%block content%}
+
+<form method="post">
+    {%csrf_token%}
+    <h5>¿¿Estas seguro de eliminar esta informacion??</h5>
+    <div class="botones">
+        <a href="{%url 'home' %}">Cancelar</a>
+        <button type="submit" value="delete" name="delete">Eliminar</button>
+        
+    </div>
+</form>
+
+{%endblock%}

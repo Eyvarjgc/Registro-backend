@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{% load static  %}
+
+
+{%block content%}
+
+<div class="col-12">
+    <div class="container-fluid text-start">
+        <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Categorias
+        </a>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                {%for categorie in categoria %}
+                    <div >
+                        <a class="" href="{{categorie.id}}">{{categorie.name}}</a>
+                    </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p>{{count}} Elementos</p>
+    {%for objeto in objetos%}
+    <p>{{objeto.name}}</p> 
+    <a href="{%url 'edit' objeto.id%}">Editar</a>
+    <a href="{%url 'delete' objeto.id%}">Eliminar</a>
+    <a href="{%url 'conver' objeto.id%}">Conversaciones</a>
+    {%endfor%}
+    <img src="{% static 'images/griffith.jpg' %}" alt="My image">
+</div>
+{%endblock%}

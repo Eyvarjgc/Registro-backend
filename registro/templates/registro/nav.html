@@ -1,0 +1,61 @@
+
+
+    <nav class="navbar navbar-expand-md p-4 ">
+        <div class="container-fluid">
+            <div class="row col-md-12 ">
+            <ul class="navbar-nav nav-underline justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'home' %}">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'add_categoria' %}">Agregar nueva categoria</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'add_datos' %}">Agregar nuevos datos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'cosas-ver' %}">Cosas por ver</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'imagen' %}">imagen</a>
+                </li>
+                {%if request.user.is_authenticated%}
+                <li class="nav-item">
+                    <a href="{%url 'logoutUser'%}" class="nav-link">Logout</a>
+                </li>
+                {%else%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'login'%}">Iniciar sesion </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'register'%}">Registrarse</a>
+                </li>
+                {%endif%}
+                <li class="nav-item">
+                    <form method="GET" action="{%url 'home' %}" class="d-flex flex-row">
+                        <div class="container d-flex flex-row">
+                            <i class="fi fi-rr-search  align-self-lg-center m-2"></i>
+                            <input class="form-control me-2" type="text" name="search" placeholder="Buscar un elemento">
+                        </div>
+                    </form>
+                </li>
+            </ul>
+            </div>
+        </div>
+
+    </nav>
+    <!-- <div class="col-3">
+        <div class="">
+            <form method="GET" action="{%url 'home' %}" class="d-flex flex-row">
+                <div class="container d-flex flex-row">
+                    <i class="fi fi-rr-search  align-self-lg-center m-2"></i>
+                    <input class="form-control me-2" type="text" name="search" placeholder="Buscar un elemento">
+                </div>
+            </form>
+        </div>
+    </div> -->
+
+

@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+
+
+
+{%block content%}
+
+<form action="/add_categoria/" method="post">
+    {%csrf_token%}
+    {{form}}
+    <input type="submit" value="Guardar">
+</form>
+
+{%endblock%}

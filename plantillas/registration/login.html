@@ -1,0 +1,29 @@
+{%extends 'base.html' %}
+{%load crispy_forms_tags%}
+
+
+
+{%block content%}
+<h1>Log in</h1>
+<form method="POST">
+    {% csrf_token %}
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+
+
+    <label>Nombre</label>
+    <input type="text" name="username" placeholder="Ingrese su nombre" >
+
+    <label>Contraseña</label>
+    <input type="password" name="password" placeholder="Ingrese su contraseña" >
+
+    <input type="submit" value="Iniciar sesion">
+</form>
+
+{%endblock%}

@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+{%if count == 0 %}
+<h4 class="test">No hay elementos</h4>
+{%else%}
+<h4>{{count}} Elementos</h4>
+{%endif%}
+
+
+<p>Finalizados</p>
+{%for datos in dato%}
+{%if datos.done == True%}
+    <p>{{datos.name}}</p>
+    <a href="{%url 'edit' datos.id%}">Editar</a>
+    <a href="{%url 'delete' datos.id%}">Eliminar</a>
+    <a href="{%url 'conver' datos.id%}">Conversaciones</a>
+
+{%endif%}
+{%endfor%}
+
+<p>No-finalizados</p>
+{%for datos in dato%}
+{%if datos.done == False%}
+    <p>{{datos.name}}</p>
+    <a href="{%url 'edit' datos.id%}">Editar</a>
+    <a href="{%url 'delete' datos.id%}">Eliminar</a>
+    <a href="{%url 'conver' datos.id%}">Conversaciones</a>
+{%endif%}
+{%endfor%}
+
+{%endblock%}

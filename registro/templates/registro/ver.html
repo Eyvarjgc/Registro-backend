@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+<p>Por Finalizar</p>
+
+
+{%csrf_token%}
+
+<form action="" method="post">
+<ul>
+    {%for datos in dato%}
+        {%if datos.done == True%}
+            <li><input type="checkbox" value="clicked", name="c{{datos.id}} "checked>{{datos.name}}</li>
+        {%else%}
+            <li><input type="checkbox" value="clicked", name="c{{datos.id}} ">{{datos.name}}</li>
+        {%endif%}  
+    {%endfor%}
+</ul>
+</form>
+
+<button type="submit" value="guardar" name="save">Guardar</buttom>
+
+{%endblock%}

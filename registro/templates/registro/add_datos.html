@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+
+
+{%block content%}
+
+<form action="" method="post">
+    {%csrf_token%}
+    {{form|crispy}}
+    {% comment %} {%crispy%} {% endcomment %}
+    {% comment %} {{form.as_p}} {% endcomment %}
+    <input type="submit" value="Guardar">
+</form>
+
+{%endblock%}
