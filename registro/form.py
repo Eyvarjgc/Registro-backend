@@ -1,10 +1,10 @@
 from django.forms import ModelForm
 from django import forms
-from .models import datos
+from .models import datos,User
 from . import views
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User 
+# from django.contrib.auth.models import User 
 
 class Categorias_Form(forms.Form):
     name = forms.CharField(label="Nombre",max_length=200,widget = forms.TextInput(attrs=({'placeholder': 'Escriba su categoria'})))

@@ -1,0 +1,16 @@
+a{text-decoration: none;}
+body{
+    background: rgb(77,231,165);
+    background: linear-gradient(90deg, rgba(77,231,165,1) 0%, rgba(7,96,32,1) 87%);
+}
+.profile_image{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+.categorie{
+    width: fit-content;
+    color: black;
+    font-size: 25px;
+    
+}

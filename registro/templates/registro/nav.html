@@ -1,14 +1,18 @@
 
-
+{%load static%}
     <nav class="navbar navbar-expand-md p-4 ">
         <div class="container-fluid">
             <div class="row col-md-12 ">
-            <ul class="navbar-nav nav-underline justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'home' %}">Principal</a>
+            <ul class="navbar-nav nav-underline justify-content-md-start ">
+                <li class="nav-item d-flex flex-row">
+                    {%if request.user.is_authenticated%}
+                            <img class="profile_image"src="{{request.user.avatar.url}}" alt="">
+                            <a class="nav-link" href="#">{{request.user.name}}</a>
+                        
+                    {%endif%}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Perfil</a>
+                    <a class="nav-link" href="{%url 'home' %}">Principal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{%url 'add_categoria' %}">Agregar nueva categoria</a>

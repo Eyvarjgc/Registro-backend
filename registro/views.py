@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
-from .models import categorias,datos,Message
+from .models import categorias,datos,Message,User
 from .form import Categorias_Form,datosform,RegisterUser,Image
 from django.template import context,Template
 from django.http import HttpRequest,HttpResponseRedirect
 from .form import Categorias_Form
 from django.db.models import Q
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.forms import UserCreationForm 
@@ -16,12 +16,13 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
+    host = User.objects.all()
     search = request.GET.get('search') if request.GET.get('search') != None else ""
     objetos = datos.objects.filter( Q(categorie__name__icontains = search)|
         Q(name__icontains = search))
     categoria = categorias.objects.all()
     categorieCount = categoria.count()
-    return render(request,'registro/home.html',{'categoria':categoria,'objetos':objetos,'count':categorieCount})
+    return render(request,'registro/home.html',{'categoria':categoria,'objetos':objetos,'count':categorieCount,'host':host})
 
 def objeto(request,categorie):
     dato = datos.objects.filter(categorie = categorie)
@@ -173,3 +174,5 @@ def imagen(request):
             image.save()
         
     return render(request,'registro/imagen.html',{'image':image})
+
+

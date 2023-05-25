@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-AUTH_USER_MODEL = 'registro.user'
+AUTH_USER_MODEL = 'registro.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,13 +124,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+
 STATIC_URL = "/static/"
-
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    # BASE_DIR / "static"
+    os.path.join(BASE_DIR, "static")
 ]
+STATIC_ROOT = BASE_DIR / 'static/style'
 
+# STATIC IMAGES
 
+MEDIA_URL = "/images/"
+MEDIA_ROOT = BASE_DIR / 'static/images'
 
 CRISPY_ALlOWED_TEMPLATES_PACK = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'Bootstrap5'

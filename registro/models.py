@@ -1,9 +1,17 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import  AbstractUser
 # Create your models here.
 
 
+class User(AbstractUser):
+    name = models.CharField(("Nombre"), max_length=50,null=True)
+    email = models.EmailField(("Correo"), max_length=254,unique=True,null=True)
+    bio = models.TextField(("Sobre mi"),null=True)
+    avatar = models.ImageField(("Imagen"),default='griffith.jpg')
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
 
 class categorias(models.Model):
@@ -53,6 +61,5 @@ class ver(models.Model):
     def __str__(self) -> str:
         return self.name
     
-
 
 

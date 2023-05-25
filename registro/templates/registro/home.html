@@ -4,11 +4,12 @@
 
 {%block content%}
 
-<div class="col-12">
+<div class="col-12 ">
     <div class=" text-start ">
-        <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="categorie" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Categorias
         </a>
+        
         <div class="collapse " id="collapseExample">
             <div class="card card-body bg-black">
                 {%for categorie in categoria %}
@@ -29,6 +30,6 @@
     <a href="{%url 'delete' objeto.id%}">Eliminar</a>
     <a href="{%url 'conver' objeto.id%}">Conversaciones</a>
     {%endfor%}
-    <img src="{% static 'images/griffith.jpg' %}" alt="My image">
+    {% comment %} <img src="{% static 'images/griffith.jpg' %}" alt="My image"> {% endcomment %}
 </div>
 {%endblock%}
