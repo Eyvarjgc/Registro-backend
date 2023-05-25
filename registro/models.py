@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 # Create your models here.
 
 
@@ -53,7 +53,6 @@ class ver(models.Model):
     def __str__(self) -> str:
         return self.name
     
-
 
 
 

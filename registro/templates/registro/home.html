@@ -5,12 +5,12 @@
 {%block content%}
 
 <div class="col-12">
-    <div class="container-fluid text-start">
+    <div class=" text-start ">
         <a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Categorias
         </a>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
+        <div class="collapse " id="collapseExample">
+            <div class="card card-body bg-black">
                 {%for categorie in categoria %}
                     <div >
                         <a class="" href="{{categorie.id}}">{{categorie.name}}</a>
