@@ -4,14 +4,15 @@
 
 {%block content%}
 
-<div class="col-12 ">
-    <div class=" text-start ">
+<div class="col-12 p-5">
+
+    <div class=" ">
         <a class="categorie" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Categorias
+            Categorias<i class="fi fi-rr-angle-small-down"></i>
         </a>
         
         <div class="collapse " id="collapseExample">
-            <div class="card card-body bg-black">
+            <div class="card card-body categoriebg">
                 {%for categorie in categoria %}
                     <div >
                         <a class="" href="{{categorie.id}}">{{categorie.name}}</a>
@@ -20,16 +21,45 @@
             </div>
         </div>
     </div>
+
+    {%if count == 1%}
+    <p>{{count}} Elemento</p>
+    {%else%}
+    <p>{{count}} Elementos</p>
+    {%endif%}
+
+
+    <div class="d-flex flex-colum p-5">
+        <!-- <img src="{%static 'images/spider.jpg'%}" alt="example"> -->
+
+        <!-- <img src="{{objetos.image.url}}" class="card-img-top" alt="..."> -->
+
+            {%for objeto in objetos%}
+            {%if objeto.host == request.user%}
+            
+            <div class="card m-2" style="width: 18rem;">
+                {%if objeto.image%}            
+
+                <img src="{{objeto.image.url}}" class="card-img-top" alt="...">
+                <!-- <img src="{%static 'images/spider.jpg'%}" alt="example">  -->
+                {% endif %}
+                <img src="" alt="">
+                <!-- <img src="{{datos.image.url}}" class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                <h5 class="card-title">{{objeto.name}}</h5>
+                <p class="card-text">{{objeto.description}}</p>
+                <a href="{%url 'edit' objeto.id%}"><i class="fi fi-rr-edit"></i></a>
+                <a href="{%url 'delete' objeto.id%}"><i class="fi fi-rr-trash"></i></a>
+                <a href="{%url 'conver' objeto.id%}"><i class="fi fi-rr-comment"></i></a>
+                </div>
+            </div>
+            {%endif%}
+            {%endfor%}
+    
+    </div>
+
+    
 </div>
 
-<div>
-    <p>{{count}} Elementos</p>
-    {%for objeto in objetos%}
-    <p>{{objeto.name}}</p> 
-    <a href="{%url 'edit' objeto.id%}">Editar</a>
-    <a href="{%url 'delete' objeto.id%}">Eliminar</a>
-    <a href="{%url 'conver' objeto.id%}">Conversaciones</a>
-    {%endfor%}
-    {% comment %} <img src="{% static 'images/griffith.jpg' %}" alt="My image"> {% endcomment %}
-</div>
+
 {%endblock%}

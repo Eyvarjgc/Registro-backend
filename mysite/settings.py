@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -127,15 +128,17 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    # BASE_DIR / "static"
+    # BASE_DIR / "static",
     os.path.join(BASE_DIR, "static")
+    # '\Users\usuario\Documents\Registro-backend\static\style'
 ]
-STATIC_ROOT = BASE_DIR / 'static/style'
+STATIC_ROOT =BASE_DIR / 'static/files'
 
 # STATIC IMAGES
 
-MEDIA_URL = "/images/"
-MEDIA_ROOT = BASE_DIR / 'static/images'
+MEDIA_URL = "/media/"
+# MEDIA_ROOT = BASE_DIR / 'static/images'
+MEDIA_ROOT = BASE_DIR / ''
 
 CRISPY_ALlOWED_TEMPLATES_PACK = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'Bootstrap5'

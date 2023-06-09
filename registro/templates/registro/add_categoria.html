@@ -1,13 +1,40 @@
 {%extends 'base.html'%}
-
+{%load crispy_forms_tags%}
 
 
 {%block content%}
+<div class="container row">
+    <!-- <div class="container col-12"> -->
+        <div class="col-6 ">
+                <div class="w-100 card p-5">
+                <form action="/add_categoria/" method="post" class=" ">
+                    {%csrf_token%}
+                        <label for="categoriename" class="form-label">Nombre de categoria</label>
+                        {{form|crispy}}
+                        <button type="submit" class="btn btn-primary text-center">Guardar</button>
+                </form>
+                </div>
+                <div class="w-100 card p-5">
+                    <div class="card-title">Categorias añadidas</div> 
+                    {%for categoria in categorias%}
+                    <div class="container d-flex flex-column ">
+                        {{categoria.name}}
+                    </div>
+                    {%endfor%}
+            </div>
+        </div>   
+        {% comment %} <div class="col-6 ">
+            <div class="w-100 card p-5">
+                    <div class="card-title">Categorias añadidas</div> 
+                    {%for categoria in categorias%}
+                    <div class="container d-flex flex-column ">
+                        {{categoria.name|upper}}
+                    </div>
+                    {%endfor%}
+            </div>
+        </div>      {% endcomment %}
+    <!-- </div> -->
+</div>
 
-<form action="/add_categoria/" method="post">
-    {%csrf_token%}
-    {{form}}
-    <input type="submit" value="Guardar">
-</form>
 
 {%endblock%}

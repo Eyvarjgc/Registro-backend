@@ -2,7 +2,9 @@
 
 
 {%block content%}
-<p>Por Finalizar</p>
+<div class="container-fluid row">
+    <div class="col-6">
+        <p>Por Finalizar</p>
 
 
 {%csrf_token%}
@@ -19,6 +21,8 @@
 </ul>
 </form>
 
-<button type="submit" value="guardar" name="save">Guardar</buttom>
+<input class="btn btn-dark"type="submit" value="Guardar">
 
+    </div>
+</div>
 {%endblock%}

@@ -21,8 +21,8 @@ def home(request):
     objetos = datos.objects.filter( Q(categorie__name__icontains = search)|
         Q(name__icontains = search))
     categoria = categorias.objects.all()
-    categorieCount = categoria.count()
-    return render(request,'registro/home.html',{'categoria':categoria,'objetos':objetos,'count':categorieCount,'host':host})
+    objetosCount = objetos.count()
+    return render(request,'registro/home.html',{'categoria':categoria,'objetos':objetos,'count':objetosCount,'host':host})
 
 def objeto(request,categorie):
     dato = datos.objects.filter(categorie = categorie)
@@ -32,6 +32,7 @@ def objeto(request,categorie):
 
 @login_required
 def add_categoria(request):
+    categorie = categorias.objects.all()
     form = Categorias_Form()
     if request.method == 'POST':
         form = Categorias_Form(request.POST or None)
@@ -39,17 +40,26 @@ def add_categoria(request):
             c = categorias.objects.create(**form.cleaned_data)
             c.save()
             return redirect('home')
-        
-    return render(request,'registro/add_categoria.html',{'form':form})
+    context = {
+        'form':form,
+        'categorias':categorie
+            }
+    return render(request,'registro/add_categoria.html',context)
 
 @login_required
 def add_datos(request):
     add = datosform()
+    # if request.user.is_authenticated:
     if request.method == 'POST':
-        add = datosform(request.POST or None)
+        add = datosform(request.POST,request.FILES)
         if add.is_valid():
+            # datos = add.save(commit=False)
+            # datos.User = request.user
+            # datos.save()
             add.save()
             return redirect('home')
+        else:
+            datos = datosform()
     return render(request,'registro/add_datos.html',{'form':add})
 
 def edit(request,pk):
@@ -77,7 +87,7 @@ def conver(request,pk):
 
     if request.method == 'POST':
         message = Message.objects.create(
-            user = request.user,
+            host = request.user,
             room = dato,
             body = request.POST.get('body')
         )

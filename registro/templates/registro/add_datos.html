@@ -1,15 +1,19 @@
 {%extends 'base.html'%}
 {%load crispy_forms_tags%}
-
+{% load static  %}
 
 {%block content%}
+<div class="container-fluid row">
+    <div class="col-6 p-5">
+        <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            
+            
+            {{form|crispy}}
 
-<form action="" method="post">
-    {%csrf_token%}
-    {{form|crispy}}
-    {% comment %} {%crispy%} {% endcomment %}
-    {% comment %} {{form.as_p}} {% endcomment %}
-    <input type="submit" value="Guardar">
-</form>
-
+            
+            <input class="btn btn-dark"type="submit" value="Guardar">
+        </form>
+    </div>
+</div>
 {%endblock%}

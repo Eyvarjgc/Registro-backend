@@ -7,12 +7,16 @@ from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User 
 
 class Categorias_Form(forms.Form):
-    name = forms.CharField(label="Nombre",max_length=200,widget = forms.TextInput(attrs=({'placeholder': 'Escriba su categoria'})))
+    name = forms.CharField(
+        label="",
+        max_length=200,
+        widget = forms.TextInput(attrs=({'placeholder': ''})),
+        # error_messages={"required": "Por favor ingrese una categoria"},
+        )
 
-
-    # def clean_name(self,new):
+    # def clean_name(self):
     #     name = self.cleaned_data.get('name')
-    #     categories = ['Anime', 'Series', 'Peliculas']
+    #     categories = ['Animes', 'Series', 'Peliculas','Mangas','Videojuegos','Albumes','Libros']
     #     if name.capitalize() in categories:
     #         raise forms.ValidationError('La categoria ya existe')
     #     return name
@@ -21,7 +25,8 @@ class Categorias_Form(forms.Form):
 class datosform(ModelForm):
     class Meta:
         model = datos
-        fields = ('user','name', 'categorie', 'description', 'done')
+        fields = ('host','name', 'categorie', 'description', 'done','image')
+        exclude = ('host',)
         widgets = {
             'name':forms.TimeInput(attrs={'placeholder':'Ingrese nombre'}),
             'description':forms.Textarea(attrs={'placeholder':'Ingrese descripcion'})

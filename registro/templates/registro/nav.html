@@ -1,41 +1,38 @@
 
 {%load static%}
-    <nav class="navbar navbar-expand-md p-4 ">
-        <div class="container-fluid">
-            <div class="row col-md-12 ">
-            <ul class="navbar-nav nav-underline justify-content-md-start ">
-                <li class="nav-item d-flex flex-row">
-                    {%if request.user.is_authenticated%}
-                            <img class="profile_image"src="{{request.user.avatar.url}}" alt="">
-                            <a class="nav-link" href="#">{{request.user.name}}</a>
-                        
-                    {%endif%}
-                </li>
+
+    <nav class="navbarmain navbar navbar-expand-md p-4 ">
+        {% comment %} bg-black  {% endcomment %}
+        <div class="">
+            <div class="row col-md-12  ">
+            <ul class=" navbar-nav nav-underline   ">
+                <li class="nav-item d-flex flex-row ulcustom">
+                
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'home' %}">Principal</a>
+                    <a class="nav-link text-white" href="{%url 'home' %}">Principal</a>
                 </li>
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link" href="{%url 'add_categoria' %}">Agregar nueva categoria</a>
+                </li> {% endcomment %}
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="{%url 'add_datos' %}">Agregar nuevos datos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'add_datos' %}">Agregar nuevos datos</a>
+                    <a class="nav-link text-white" href="{%url 'cosas-ver' %}">Cosas por ver</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'cosas-ver' %}">Cosas por ver</a>
-                </li>
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link" href="{%url 'imagen' %}">imagen</a>
-                </li>
+                </li> {% endcomment %}
                 {%if request.user.is_authenticated%}
                 <li class="nav-item">
-                    <a href="{%url 'logoutUser'%}" class="nav-link">Logout</a>
+                    <a href="{%url 'logoutUser'%}" class="nav-link text-white">Logout</a>
                 </li>
                 {%else%}
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'login'%}">Iniciar sesion </a>
+                    <a class="nav-link text-white" href="{%url 'login'%}">Iniciar sesion </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'register'%}">Registrarse</a>
+                    <a class="nav-link text-white" href="{%url 'register'%}">Registrarse</a>
                 </li>
                 {%endif%}
                 <li class="nav-item">
@@ -46,6 +43,12 @@
                         </div>
                     </form>
                 </li>
+                {%if request.user.is_authenticated%}
+                <img class="profile_image"src="{{request.user.avatar.url}}" alt="">
+                <a class="nav-link text-white" href="#">{{request.user.name}}</a>
+            
+                {%endif%}
+            </li>
             </ul>
             </div>
         </div>

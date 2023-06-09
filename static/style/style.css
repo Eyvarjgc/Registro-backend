@@ -1,3 +1,8 @@
+/* 
+font-family: 'Dosis', sans-serif;
+font-family: 'Mochiy Pop One', sans-serif;
+ */
+
 a{text-decoration: none;}
 body{
     background: rgb(77,231,165);
@@ -14,3 +19,16 @@ body{
     font-size: 25px;
     
 }
+.categoriebg{
+    background-color: rgb(251, 251, 251);
+}
+
+.navbarmain{
+    font-size: 16px;
+    font-family: 'Mochiy Pop One', sans-serif;;
+    background-color: rgb(1, 39, 2);
+    text-align: center;
+}
+/* .ulcustom li a {
+   
+} */
